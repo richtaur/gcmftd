@@ -26,8 +26,6 @@ foreach ($output as $line) {
 
 if ($messages) {
 	$message = implode(' ', $messages);
-	echo $message;
-
 	exec('git commit -a -m "' . $message . '"');
 } else {
 	echo "[NOTICE] No lines removed from $file.\n";
