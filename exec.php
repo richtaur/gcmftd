@@ -19,13 +19,13 @@ foreach ($output as $line) {
 	if ($found) {
 		// Is this the removal of a line from the $file markdown?
 		if (substr($line, 0, 3) == '-* ') {
-			$messages[] = str_replace('"', '\\"', $line);
+			$messages[] = str_replace('"', '\\"', substr($line, 3));
 		}
 	}
 }
 
 if ($messages) {
-	$message = implode(' ', $messages);
+	$message = implode('; ', $messages);
 	exec('git commit -a -m "' . $message . '"');
 } else {
 	echo "[NOTICE] No lines removed from $file.\n";
